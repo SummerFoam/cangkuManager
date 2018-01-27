@@ -1,0 +1,87 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.font1 {
+	font-family: ¿¬Ìå;
+	font-size: 40px;
+}
+
+div#div1 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+}
+
+div#div1>img {
+	height: 100%;
+	width: 100%;
+	border: 0;
+}
+
+.main {
+	width: 700px;
+	height: 400px;
+	background-color: rgba(250, 250, 250, 0.3);
+	margin: 0 auto;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+}
+
+.main_1 {
+	width: 600px;
+	height: 300px;
+	margin: 0 auto;
+}
+
+.label {
+	display: inline-block;
+	width: 150px;
+	height: 50px;
+	font-size: 27px;
+	text-align: right;
+}
+
+.text {
+	display: inline-block;
+	width: 400px;
+	height: 40px;
+	text-align: left;
+}
+
+div {
+	margin-top: 10px;
+}
+
+.buttonStyle {
+	width: 100px;
+	height: 30px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+}
+
+.textinput {
+	width: 300px;
+	height: 32px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.textinput1 {
+	width: 150px;
+	height: 32px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}

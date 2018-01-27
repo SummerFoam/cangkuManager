@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.pdsu.bean">
+  <class name="OutputLog" table="outputLog">
+     <!-- id元素用于指定主键属性 -->
+     <id name="id" column="id" type="java.lang.Integer">
+        <generator class="native"></generator>
+     </id>
+  
+     <property name="productName" type="java.lang.String">
+         <column name="productName" ></column>
+     </property>
+     <property name="productCount" type="java.lang.Integer">
+         <column name="productCount"></column>
+     </property>
+     <property name="chuHuo" type="java.lang.String">
+         <column name="chuHuo" ></column>
+     </property>
+     <property name="shouHuo" type="java.lang.String">
+         <column name="shouHuo" ></column>
+     </property>
+    
+     <property name="date2" type="java.util.Date">
+         <column name="date2" ></column>
+     </property>
+    
+  </class>  
+</hibernate-mapping>

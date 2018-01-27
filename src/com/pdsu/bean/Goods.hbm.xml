@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.pdsu.bean">
+  <class name="Goods" table="goods">
+     <!-- id元素用于指定主键属性 -->
+     <id name="goodsId" column="goodsId" type="java.lang.Integer">
+     <!-- generator元素用于指定主键值的生成策略 -->
+       <!--  <generator class="sequence">
+            <param name="sequence">emp_seq</param>
+        </generator> -->
+        <generator class="native"></generator>
+     </id>
+  
+     <property name="ofCategoryName" type="java.lang.String">
+         <column name="ofCategoryName" ></column>
+     </property>
+     <property name="goodsName" type="java.lang.String">
+         <column name="goodsName"></column>
+     </property>
+     <property name="goodsCount" type="java.lang.Integer">
+         <column name="goodsCount" ></column>
+     </property>
+     <property name="goodsPrice" type="java.lang.Float">
+         <column name="goodsPrice" ></column>
+     </property>
+     <property name="inputManager" type="java.lang.String">
+         <column name="inputManager" ></column>
+     </property>
+     <property name="receiveManager" type="java.lang.String">
+         <column name="receiveManager" ></column>
+     </property>
+     <property name="inputDate" type="java.util.Date">
+         <column name="inputDate" ></column>
+     </property>
+     
+     <property name="ofRackId" type="java.lang.String">
+         <column name="ofRackId" ></column>
+     </property>
+     
+     <property name="ofCangId" type="java.lang.String">
+         <column name="ofCangId" ></column>
+     </property>
+  </class>  
+</hibernate-mapping>

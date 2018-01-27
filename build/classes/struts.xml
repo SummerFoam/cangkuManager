@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+	"http://struts.apache.org/dtds/struts-2.1.dtd">
+	
+<struts>
+
+	<!-- 配置开发模式，不用每次修改struts.xml都重启服务器 -->
+	<constant name="struts.devMode" value="true"></constant>
+	
+	<constant name="struts.action.extension" value="action,do"></constant>
+	<package name="test" extends="struts-default">
+		<action name="insertCang" class="com.pdsu.serviceAction.CangAction"
+			method="insertCang">
+			<result name="insert" type="chain">findAll</result>
+			<result name="error">/insertCang.jsp</result>
+		</action>
+		<action name="findAll" class="com.pdsu.serviceAction.CangAction"
+			method="findAll">
+			<result name="success">/cang_manage.jsp</result>
+		</action>
+		<action name="can_update" class="com.pdsu.serviceAction.CangAction"
+			method="update">
+			<result>/can_update.jsp</result>
+			<result name="update" type="chain">findAll</result>
+		</action>
+		<action name="can_delete" class="com.pdsu.serviceAction.CangAction"
+			method="delete">
+			<result name="delete" type="chain">findAll</result>
+			<result name="err" type="chain">findAll</result>
+		</action>
+
+
+		<action name="login" class="com.pdsu.serviceAction.LoginAction">
+			<result name="success">superMain.jsp</result>
+			<result name="main">main.jsp</result>
+			<result name="error">login.jsp</result>
+		</action>
+		<action name="createImageAction" class="com.pdsu.serviceAction.CreateImageAction">
+			<result name="success" type="stream">
+				<param name="contentType">image/1.png</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+
+		<action name="SelManagers" class="com.pdsu.serviceAction.SelManagers">
+			<result>selectUser.jsp</result>
+		</action>
+		<action name="InManagers" class="com.pdsu.serviceAction.InManagers">
+			<result>selectUser.jsp</result>
+			<result name="error">insertUser.jsp</result>
+		</action>
+		<action name="UpManagers" class="com.pdsu.serviceAction.UpManagers">
+			<result>updateUser.jsp</result>
+			<result name="error">selectUser.jsp</result>
+		</action>
+		<action name="UpInManagers" class="com.pdsu.serviceAction.UpInManagers">
+			<result>selectUser.jsp</result>
+			<result name="error">updateUser.jsp</result>
+		</action>
+		<action name="DelManagers" class="com.pdsu.serviceAction.DelManagers">
+			<result>selectUser.jsp</result>
+		</action>
+
+		<action name="addRackAction" class="com.pdsu.serviceAction.AddRackAction">
+			<result name="error" type="chain">SelAllcang</result>
+			<result name="success" type="chain">
+				<param name="actionName">SelAllrack</param>
+				<param name="namespace">/</param>
+				<param name="method "></param>
+			</result>
+		</action>
+		<!-- 显示当前的所有货架 -->
+		<action name="SelAllrack" class="com.pdsu.serviceAction.SelectRackAction">
+			<result name="success">/SelAllrack.jsp</result>
+			<result name="ERROR">/failure.jsp</result>
+		</action>
+
+		<!-- 用于回显要修改的数据 -->
+		<action name="SelrackID" class="com.pdsu.serviceAction.SelRackIDAction">
+			<result name="success">/UpdRack.jsp</result>
+			<result name="ERROR">/failure.jsp</result>
+		</action>
+
+		<!-- 添加货架之前的检查，程序的开端 -->
+		<action name="SelAllcang" class="com.pdsu.serviceAction.SelectCangAction">
+			<result name="success">/addrack.jsp</result>
+			<result name="ERROR">/failure.jsp</result>
+		</action>
+		
+		<!-- 删除一个货架 -->
+		<action name="delete" class="com.pdsu.serviceAction.DelRackAction">
+			<result name="success" type="chain">
+				<param name="actionName">SelAllrack</param>
+				<param name="namespace">/</param>
+				<param name="method "></param>
+			</result>
+			<result name="error" type="chain">
+			<param name="actionName">SelAllrack</param>
+			<param name="namespace">/</param>
+				<param name="method "></param>
+			</result>
+		</action>
+
+		<!-- 更新货架信息 -->
+		<action name="updRack" class="com.pdsu.serviceAction.UpdRackAction">
+			<result name="success" type="chain">
+				<param name="actionName">SelAllrack</param>
+				<param name="namespace">/</param>
+				<param name="method "></param>
+			</result>
+			<result name="error">SelAllrack</result>
+		</action>
+
+
+<!-- 添加类别，但是不是程序的开始 -->
+ <action name="addTypeAction" class="com.pdsu.serviceAction.AddGoodsCategoryAction">
+    <result name="error" type="chain">addSelAllType</result>
+	<result name="success" type="chain">
+		<param name="actionName">SelAllType</param>
+		<param name="namespace">/</param>
+		<param name="method "></param>
+	</result>
+ </action>
+ 
+          <!-- 显示当前的所有类别 -->
+<action name="SelAllType" class="com.pdsu.serviceAction.SelectGoodsCategoryAction">
+     <result name="success">/SelAllType.jsp</result>
+    <result name="ERROR">/failure.jsp</result>
+  </action>
+  
+       <!-- 用于回显要修改的数据 -->
+  <action name="SelTypeID" class="com.pdsu.serviceAction.SelectCategoryNameAction">
+   <result name="success">/UpdType.jsp</result> 
+    <result name="ERROR">/failure.jsp</result>
+  </action>
+  
+        <!--   添加类别之前的检查，程序的开端 -->
+  <action name="addSelAllType" class="com.pdsu.serviceAction.SelectRackAction2">
+	<result name="success">/addType.jsp</result>
+	<result name="ERROR">/failure.jsp</result>
+  </action>
+           <!--  删除一个类别 -->
+  <action name="deleteType" class="com.pdsu.serviceAction.DelGoodsCategoryAction">
+     <result name="success" type="chain">
+	<param name="actionName">SelAllType</param>
+	<param name="namespace">/</param>
+	<param name="method "></param>
+     </result>
+     
+	<result name="error" type="chain">
+		<param name="actionName">SelAllType</param>
+	<param name="namespace">/</param>
+	<param name="method "></param>
+	
+	</result>
+  </action>
+  
+        <!--  更新类别信息 -->
+  <action name="updType" class="com.pdsu.serviceAction.updateGoodsCategoryAction">
+	<result name="success" type="chain">
+		<param name="actionName">SelAllType</param>
+		<param name="namespace">/</param>
+		<param name="method "></param>
+	</result>
+    <result name="error">/failure.jsp</result>
+  </action>
+
+	
+
+
+      <action name="selectAllProduct" class="com.pdsu.serviceAction.SelectAllProductAction">
+          <result>/right.jsp</result>
+      </action>
+      <action name="deleteProduct" class="com.pdsu.serviceAction.DeleteProductAction">
+          <result type="chain">selectAllProduct</result>
+      </action>
+      <action name="selectAllProductType" class="com.pdsu.serviceAction.SelectAllProductTypeAction">
+          <result >/addProduct.jsp</result>
+      </action>
+        <action name="addProduct" class="com.pdsu.serviceAction.addProductAction">
+          <result type="chain">selectAllProduct</result>
+      </action>
+      
+      <action name="updataFindProduct" class="com.pdsu.serviceAction.UpdataFindProductAction">
+          <result >/updata.jsp</result>
+      </action>
+      
+      <action name="updataSaveProduct" class="com.pdsu.serviceAction.UpdataSaveProductAction" method="execute">
+          <result name="success" type="chain">selectAllProduct</result>
+          
+          
+      </action>
+      <action name="fuzzyProductName" class="com.pdsu.serviceAction.FuzzyProductNameAction">
+          <result >/fuzzy.jsp</result>
+      </action>
+       <action name="inputLog" class="com.pdsu.serviceAction.InputLogAction">
+          <result >/inputLog.jsp</result>
+      </action>
+      <action name="inputLogSave" class="com.pdsu.serviceAction.InputLogSaveAction">
+          <result type="chain">selectAllProduct</result>
+          
+      </action>
+       <action name="outputLog" class="com.pdsu.serviceAction.outputLogAction">
+          <result >/outputLog.jsp</result>
+      </action>
+      
+      <action name="outputLogSave" class="com.pdsu.serviceAction.outputLogSaveAction">
+      
+          <result name="success" type="chain">selectAllProduct</result>
+          <result name="error" type="redirectAction">outputLog</result>
+           
+      </action>
+      
+     
+      <action name="selectAllInputLog" class="com.pdsu.serviceAction.SelectAllInputLogAction">
+          <result >/showInputLog.jsp</result>
+      </action>
+       <action name="deleteInputLog" class="com.pdsu.serviceAction.DeleteInputLogAction">
+          <result type="chain">selectAllInputLog</result>
+      </action>
+      
+      <action name="selectAllOutputLog" class="com.pdsu.serviceAction.SelectAllOutputLogAction">
+          <result >/showOutputLog.jsp</result>
+      </action>
+      <action name="deleteOutputLog" class="com.pdsu.serviceAction.DeleteOutputLogAction">
+          <result type="chain">selectAllOutputLog</result>
+      </action>
+     	</package>
+     	 
+    <package name="json" extends="json-default,struts-default">
+    <action name="findRockByGoodsCategory" class="com.pdsu.serviceAction.FindRockByCategoryNameAction">
+          <result type="json">
+            <param name="root">he</param>
+          </result>
+      </action>
+      <action name="checkProductName" class="com.pdsu.serviceAction.CheckProductNameAction">
+          <result type="json">
+            <param name="root" >check</param>
+          </result>
+      </action>
+    </package>
+    
+ </struts>   
+

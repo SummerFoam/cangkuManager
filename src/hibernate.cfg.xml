@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+		<!-- 这是hibernate的核心文件，它的主要作用包括1.配置连接数据库的类型... -->
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+     	<property name="connection.url">jdbc:mysql:///cangkumanage?
+        userUnicode=true&amp;characterEncoding=UTF-8</property>
+    	<property name="connection.useUnicode">true</property> 
+		<property name="connection.characterEncoding">UTF-8</property>
+
+         <property name="connection.username">root</property>
+        <property name="connection.password">123456</property>
+
+<!-- <property name="hibernate.current_session_context_class">thread</property> -->
+        <!-- SQL dialect -->
+        
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+<!-- 自动创建表，create表示如果没有表则创建，如果有重新创建，update，表示如果没有表则创建，
+		如果有表，表结构不变化，只进行数据更新
+		 -->
+		 
+	  <!--	 <property name="hbm2ddl.auto">update</property>
+		 
+       Echo all executed SQL to stdout 
+        
+        <property name="show_sql">true</property>-->
+        
+       <!--  <property name="format_sql">true</property> -->
+
+     	<!-- 这个是用于指定对象映射文件的 -->
+        <mapping resource="com/pdsu/bean/CangBean.hbm.xml"/>
+        <mapping resource="com/pdsu/bean/Goods.hbm.xml"/>
+        <mapping resource="com/pdsu/bean/Managers.hbm.xml"/>
+        <mapping resource="com/pdsu/bean/rackbean.hbm.xml"/>
+        <mapping resource="com/pdsu/bean/goodsCategorybean.hbm.xml"/>
+        <mapping resource="com/pdsu/bean/InputLog.hbm.xml"/>
+        <mapping resource="com/pdsu/bean/OutputLog.hbm.xml"/>
+        
+    </session-factory>
+
+</hibernate-configuration>
+

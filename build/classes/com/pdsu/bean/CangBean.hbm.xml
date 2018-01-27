@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping>
+	<class name="com.pdsu.bean.CangBean" table="cang">
+		<!-- id元素指定主键属性 -->
+		<id name="cangId" column="cangId" type="java.lang.String">
+		<!-- generator元素用于指定主键的生成策略 -->
+			<generator class="assigned"></generator>
+		</id>
+		<property name="cangAdress" type="java.lang.String"></property>
+	</class>
+</hibernate-mapping>

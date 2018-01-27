@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+input{
+	width: 100%;
+    height: 35px;
+}
+.sub{
+	margin-top: 20px;
+    margin-left: 270px;
+}
+
+.sub input{
+	
+	width:25%;
+	background: #3093c2;
+    color: #fff;
+}
